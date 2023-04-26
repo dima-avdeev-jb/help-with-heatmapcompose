@@ -2,6 +2,7 @@ package ru.madin.neurooptima2.plot
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
+import kotlin.math.ceil
 import kotlin.math.floor
 import kotlin.math.round
 
@@ -32,8 +33,8 @@ class LocalMapper(
         val cWidth = size.width - paddingHorizontal * 2
         val cHeight = size.height - paddingVertical * 2
         return Offset(
-            round( mapped.first * cWidth + paddingHorizontal) ,
-            round(cHeight - mapped.second * cHeight + paddingVertical)
+            floor( mapped.first * cWidth + paddingHorizontal) ,
+            floor(cHeight - mapped.second * cHeight + paddingVertical)
         )
     }
 
@@ -44,8 +45,8 @@ class LocalMapper(
         val cHeight = size.height - paddingVertical * 2
 
         return Size(
-            cWidth * (xStep / x_range),
-            cHeight * (yStep / y_range)
+            ceil(cWidth * (xStep / x_range)),
+            ceil(cHeight * (yStep / y_range))
         )
     }
 }
